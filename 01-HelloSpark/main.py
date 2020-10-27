@@ -1,7 +1,7 @@
 import sys
 from pyspark.sql import *
-from lib.logger import Log4j
-from lib.utils import *
+from app_lib.logger import Log4j
+from app_lib.utils import *
 
 
 def run(spark, logger, data_file):

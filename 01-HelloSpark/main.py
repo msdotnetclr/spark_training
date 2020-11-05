@@ -21,13 +21,13 @@ def run(spark, logger, data_file):
 
 
 if __name__ == "__main__":
-    sc = SparkSession \
+    spark = SparkSession \
         .builder \
         .appName("HelloSpark") \
-        .master("local[*]") \
+        .master("local[3]") \
         .getOrCreate()
 
-    log = Log4j(sc)
+    log = Log4j(spark)
 
     if len(sys.argv) != 2:
         log.error("Usage: HelloSpark <filename>")
@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
     file = sys.argv[1]
 
-    run(sc, log, file)
-    sc.stop()
+    run(spark, log, file)
+    #spark.stop()
 
 

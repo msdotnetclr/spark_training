@@ -1,11 +1,12 @@
 from pyspark.sql import *
 from pyspark import SparkConf
 from app_lib.logger import Log4j
-from app_lib.utils import get_spark_app_config
 
 if __name__ == "__main__":
     print("Starting program")
-    conf = get_spark_app_config()
+    conf = SparkConf()
+    conf.set("spark.app.name", "Hello Spark")
+    conf.set("spark.master", "local[3]")
     spark = (SparkSession
              .builder
              .config(conf = conf)
@@ -16,9 +17,6 @@ if __name__ == "__main__":
     log.info(f"You are using Spark version ==== {spark.version} ====")
 
     # add app logic here
-
-    conf_out = spark.sparkContext.getConf()
-    log.info(conf_out.toDebugString())
 
     log.info("Shutting down Spark")
 

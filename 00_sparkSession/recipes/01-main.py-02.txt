@@ -1,0 +1,16 @@
+from pyspark.sql import *
+
+if __name__ == "__main__":
+    print("Starting program")
+    spark = (SparkSession
+             .builder
+             .master("local[3]")
+             .appName("hello-spark")
+             .getOrCreate())
+    print(f"You are using Spark version ==== {spark.version} ====")
+
+    spark.stop()
+
+
+
+
